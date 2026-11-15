@@ -386,7 +386,7 @@ export const ForgotPasswordPage = () => {
         {step < 4 && renderStepIndicator()}
 
         <h1
-          className="font-display font-black text-xl sm:text-2xl tracking-tight"
+          className="font-sans font-semibold text-2xl sm:text-[28px] tracking-[-0.035em] leading-tight"
           style={{ color: 'var(--text-primary)' }}
         >
           {step === 1 && 'Reset your password'}
@@ -399,10 +399,10 @@ export const ForgotPasswordPage = () => {
           className="text-xs font-sans mt-0.5"
           style={{ color: 'var(--text-muted)' }}
         >
-          {step === 1 && 'Enter your registered business email to receive an account recovery code.'}
+          {step === 1 && 'We'll email you a reset code.'}
           {step === 2 && `Enter the 6-digit code dispatched to ${email || 'your email'}.`}
-          {step === 3 && 'Choose a strong new password for your MilJor procurement account.'}
-          {step === 4 && 'Your credentials have been securely updated. You can now sign in.'}
+          {step === 3 && 'Choose a new password.'}
+          {step === 4 && 'You can now sign in.'}
         </p>
       </div>
 
@@ -473,7 +473,7 @@ export const ForgotPasswordPage = () => {
       {step === 1 && (
         <form onSubmit={handleRequestCode} className="flex flex-col gap-3.5">
           <Input
-            label="Registered Business Email"
+            label="Business Email"
             type="email"
             required
             autoComplete="email"
@@ -517,12 +517,12 @@ export const ForgotPasswordPage = () => {
           <div className="text-[11px] text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-900/50 p-2.5 rounded-xl border border-stone-200 dark:border-stone-800 leading-relaxed flex items-start gap-2">
             <HelpCircle className="w-4 h-4 shrink-0 text-stone-400 mt-0.5" />
             <span>
-              Enter the 6-digit code sent to your email. The code and your new password will be verified together upon final submission.
+              Enter the code from your email.
             </span>
           </div>
 
           <Input
-            label="6-Digit Verification Code (OTP)"
+            label="Verification Code"
             type="text"
             inputMode="numeric"
             pattern="[0-9]*"
@@ -687,7 +687,7 @@ export const ForgotPasswordPage = () => {
               Password Reset Complete
             </h2>
             <p className="text-xs max-w-xs mx-auto" style={{ color: 'var(--text-muted)' }}>
-              Your account password has been updated. You can now access your wholesale procurement dashboard.
+              Your password has been updated.
             </p>
           </div>
 
