@@ -432,3 +432,11 @@ h1, h2, h3, h4, h5, h6, .font-display {
   border-left: 1px solid var(--border-default);
   border-bottom: 1px solid var(--border-default);
 }
+
+/* Authentication-only segmented controls: selected gold focus glow in both themes. */
+.auth-segment-active {
+  box-shadow: 0 0 0 1px var(--border-default), 0 0 14px 1px var(--brand-accent-soft), 0 3px 9px rgba(20, 30, 25, 0.10);
+}
+.dark .auth-segment-active {
+  box-shadow: 0 0 0 1px var(--border-default), 0 0 18px 2px rgba(200, 178, 118, 0.18), 0 4px 12px rgba(0, 0, 0, 0.32);
+}
