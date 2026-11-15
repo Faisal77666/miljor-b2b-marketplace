@@ -89,19 +89,13 @@ export const LoginPage = () => {
 
         {preferences.showBrandHeading && (
           <h1
-            className="font-display font-black text-xl sm:text-2xl tracking-tight"
+            className="font-sans font-semibold text-2xl sm:text-[28px] tracking-[-0.035em] leading-tight"
             style={{ color: 'var(--text-primary)' }}
           >
             Sign In to MilJor
           </h1>
         )}
 
-        <p
-          className="text-xs font-sans mt-0.5"
-          style={{ color: 'var(--text-muted)' }}
-        >
-          Smarter procurement for commercial food businesses
-        </p>
       </div>
 
       {/* Segmented Quick-Switch Tabs [Sign In | Create Account] */}
@@ -113,7 +107,7 @@ export const LoginPage = () => {
         }}
       >
         <span
-          className="py-1.5 text-center rounded-lg transition-all shadow-xs cursor-default"
+          className="auth-segment-active py-1.5 text-center rounded-lg transition-all cursor-default"
           style={{
             backgroundColor: 'var(--bg-surface)',
             color: 'var(--text-primary)',
@@ -195,10 +189,10 @@ export const LoginPage = () => {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="w-4 h-4 rounded text-emerald-700 focus:ring-[var(--brand-accent)] border-[var(--border-default)] cursor-pointer"
+              className="w-4 h-4 rounded cursor-pointer accent-[var(--brand-accent)] focus:ring-2 focus:ring-[var(--brand-accent)]"
             />
             <span className="transition-colors group-hover:text-[var(--text-primary)]" style={{ color: 'var(--text-secondary)' }}>
-              Remember device
+              Remember me
             </span>
           </label>
           <Link
