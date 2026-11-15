@@ -89,10 +89,10 @@ export const LoginPage = () => {
 
         {preferences.showBrandHeading && (
           <h1
-            className="font-display font-black text-xl sm:text-2xl tracking-tight"
-            style={{ color: 'var(--text-primary)' }}
+            className="text-3xl tracking-tight mb-1 text-center font-bold"
+            style={{ color: 'var(--text-primary)', fontFamily: 'Playfair Display, serif' }}
           >
-            Sign In to MilJor
+            Login
           </h1>
         )}
 
