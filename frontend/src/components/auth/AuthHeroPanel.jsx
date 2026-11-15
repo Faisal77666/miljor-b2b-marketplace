@@ -82,8 +82,8 @@ export function AuthHeroPanel({
 
   if (pageType === 'signin') {
     badgeLabel = 'B2B Procurement Platform';
-    heading = 'Welcome back to smarter procurement.';
-    supportingCopy = 'Your purchasing, suppliers and wholesale opportunities — all in one place.';
+    heading = 'Welcome back.';
+    supportingCopy = 'Your procurement, all in one place.';
     benefits = [
       {
         icon: CheckCircle2,
@@ -104,9 +104,9 @@ export function AuthHeroPanel({
   } else if (pageType === 'register') {
     if (role === 'SUPPLIER') {
       badgeLabel = 'Supplier Network Registration';
-      heading = 'Grow Your Business. Reach More Buyers.';
+      heading = 'Grow with MilJor.';
       supportingCopy =
-        'Connect with business buyers, manage your product offerings and grow through organized procurement demand.';
+        'Reach buyers and manage orders with ease.';
       benefits = [
         {
           icon: Building2,
@@ -127,9 +127,9 @@ export function AuthHeroPanel({
     } else {
       // BUYER
       badgeLabel = 'Collective Buyer Registration';
-      heading = 'Better buying power starts together.';
+      heading = 'Buy better, together.';
       supportingCopy =
-        'Bring your purchasing needs together, discover trusted suppliers and unlock smarter wholesale opportunities.';
+        'Find suppliers and better wholesale prices.';
       benefits = [
         {
           icon: Layers,
@@ -151,9 +151,9 @@ export function AuthHeroPanel({
   } else {
     // forgot-password
     badgeLabel = 'Account Security Verification';
-    heading = 'Secure account recovery.';
+    heading = 'Reset your password.';
     supportingCopy =
-      'Verify your registered business email to reset your account password and restore access.';
+      'Get back to your account securely.';
     benefits = [
       {
         icon: ShieldCheck,
@@ -237,60 +237,10 @@ export function AuthHeroPanel({
         </div>
       </div>
 
-      {/* Middle/Bottom Section: Visually Balanced Role-Specific Benefits */}
-      <div
-        className="relative z-10 space-y-2.5 pt-4 border-t mt-4 sm:mt-5"
-        style={{ borderColor: colors.divider }}
-      >
-        <div className="space-y-2">
-          {benefits.map((benefit, idx) => {
-            const Icon = benefit.icon;
-            return (
-              <div
-                key={idx}
-                className="flex items-start gap-2.5 p-2 rounded-xl transition-colors"
-                style={{
-                  backgroundColor: isDark ? 'rgba(7, 42, 33, 0.40)' : 'rgba(255, 255, 255, 0.32)',
-                  border: `1px solid ${colors.benefitBorder}`,
-                }}
-              >
-                <div
-                  className="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
-                  style={{
-                    backgroundColor: colors.benefitIconBg,
-                    color: colors.accent,
-                  }}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                </div>
-                <div className="flex flex-col space-y-0.5 text-xs font-sans">
-                  <span
-                    className="font-semibold text-xs leading-snug"
-                    style={{ color: colors.heading }}
-                  >
-                    {benefit.title}
-                  </span>
-                  <span
-                    className="text-[11px] leading-relaxed"
-                    style={{ color: colors.secondary }}
-                  >
-                    {benefit.desc}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Footer Monogram & Tagline */}
-        <div className="pt-2 flex items-center justify-center text-center text-[11px] font-sans">
-          <span
-            className="font-semibold tracking-widest uppercase text-[10px]"
-            style={{ color: colors.accent }}
-          >
-            Mil Kar Khareedo, Behtar Pao.
-          </span>
-        </div>
+      <div className="relative z-10 pt-4 mt-4 border-t" style={{ borderColor: colors.divider }}>
+        <p className="text-xs font-medium tracking-wide" style={{ color: colors.secondary }}>
+          Mil Kar Khareedo, Behtar Pao.
+        </p>
       </div>
     </div>
   );
