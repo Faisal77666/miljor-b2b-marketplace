@@ -91,12 +91,12 @@ export const RegisterPage = () => {
 
     // 1. Mandatory Identity Validations
     if (!formData.business_name.trim()) {
-      setError(role === 'SUPPLIER' ? 'Supplier / Mill Business Name is required.' : 'Buyer Business Name is required.');
+      setError(role === 'SUPPLIER' ? 'Business name is required.' : 'Business name is required.');
       return;
     }
 
     if (!formData.full_name.trim()) {
-      setError('Authorized contact person name is required.');
+      setError('Full name is required.');
       return;
     }
 
@@ -218,7 +218,7 @@ export const RegisterPage = () => {
         )}
 
         {preferences.showBrandHeading && (
-          <h1 className="font-sans font-semibold text-xl sm:text-2xl tracking-[-0.035em] leading-tight" style={{ color: 'var(--text-primary)' }}>
+          <h1 className="auth-heading text-xl sm:text-[26px] leading-tight" style={{ color: 'var(--text-primary)' }}>
             Create your MilJor account
           </h1>
         )}
@@ -321,7 +321,7 @@ export const RegisterPage = () => {
         {/* Row 1: Business Name & Authorized Contact */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <Input
-            label={role === 'SUPPLIER' ? 'Supplier Business Name' : 'Buyer Business Name'}
+            label="Business Name"
             type="text"
             name="business_name"
             placeholder={role === 'SUPPLIER' ? 'e.g. Al-Rehman Rice Mills' : 'e.g. Royal Caterers'}
@@ -332,7 +332,7 @@ export const RegisterPage = () => {
           />
 
           <Input
-            label="Contact Person Name"
+            label="Full Name"
             type="text"
             name="full_name"
             placeholder="e.g. Tariq Mehmood"
@@ -346,7 +346,7 @@ export const RegisterPage = () => {
         {/* Row 2: Email & Phone */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <Input
-            label="Business Email"
+            label="Email"
             type="email"
             name="email"
             autoComplete="email"
