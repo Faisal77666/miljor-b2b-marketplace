@@ -440,3 +440,15 @@ h1, h2, h3, h4, h5, h6, .font-display {
 .dark .auth-segment-active {
   box-shadow: 0 0 0 1px var(--border-default), 0 0 18px 2px rgba(200, 178, 118, 0.18), 0 4px 12px rgba(0, 0, 0, 0.32);
 }
+
+/* Auth-only heading refinement and a consistent Champagne Gold required marker. */
+.auth-heading {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.auth-box-enhanced label .text-amber-600,
+.auth-box-enhanced label .text-red-500 {
+  color: var(--brand-accent);
+}
