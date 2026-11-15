@@ -89,7 +89,7 @@ export const LoginPage = () => {
 
         {preferences.showBrandHeading && (
           <h1
-            className="font-sans font-semibold text-2xl sm:text-[28px] tracking-[-0.035em] leading-tight"
+            className="auth-heading text-2xl sm:text-[29px] leading-tight"
             style={{ color: 'var(--text-primary)' }}
           >
             Sign In to MilJor
@@ -161,7 +161,7 @@ export const LoginPage = () => {
       {/* Sign-In Form Fields */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <Input
-          label="Business Email"
+          label="Email"
           type="email"
           required
           autoComplete="email"
