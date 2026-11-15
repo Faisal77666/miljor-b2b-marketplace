@@ -6,16 +6,6 @@
 // =============================================================================
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import {
-  ShieldCheck,
-  CheckCircle2,
-  TrendingUp,
-  Layers,
-  Scale,
-  Sparkles,
-  Building2,
-  PackageCheck
-} from 'lucide-react';
 
 import signInHeroDark from '../../assets/hero/miljor-rice-hero-dark.png';
 import signInHeroLight from '../../assets/hero/miljor-rice-hero-light.png';
@@ -74,104 +64,28 @@ export function AuthHeroPanel({
         imageOverlay: 'linear-gradient(180deg, rgba(246,240,230,0.82) 0%, rgba(234,221,199,0.92) 100%)',
       };
 
-  // Distinct copy & benefits per page type and role
-  let badgeLabel = 'B2B Wholesale Procurement';
-  let heading = '';
-  let supportingCopy = '';
-  let benefits = [];
+  // Minimal, role-aware copy; original illustration and theme colors stay unchanged.
+  const heading = pageType === 'signin'
+    ? 'Welcome back'
+    : pageType === 'forgot-password'
+    ? 'Welcome to MilJor'
+    : role === 'SUPPLIER'
+    ? 'Grow with MilJor'
+    : 'Buy better, together';
 
-  if (pageType === 'signin') {
-    badgeLabel = 'B2B Procurement Platform';
-    heading = 'Welcome back.';
-    supportingCopy = 'Your procurement, all in one place.';
-    benefits = [
-      {
-        icon: CheckCircle2,
-        title: 'Direct Mill Pricing',
-        desc: 'Wholesale commodity rates unlocked through pooled demand.',
-      },
-      {
-        icon: Building2,
-        title: 'Verified Commercial Network',
-        desc: 'Vetted food manufacturers, importers and certified distributors.',
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Escrow Payment Protection',
-        desc: 'Safepay sandbox escrow custody released upon delivery confirmation.',
-      },
-    ];
-  } else if (pageType === 'register') {
-    if (role === 'SUPPLIER') {
-      badgeLabel = 'Supplier Network Registration';
-      heading = 'Grow with MilJor.';
-      supportingCopy =
-        'Reach buyers and manage orders with ease.';
-      benefits = [
-        {
-          icon: Building2,
-          title: 'Reach Business Buyers',
-          desc: 'Access verified commercial kitchens and restaurants across Lahore.',
-        },
-        {
-          icon: Scale,
-          title: 'Manage Products and Inventory',
-          desc: 'Maintain published catalog specifications, pricing tiers and batch stock.',
-        },
-        {
-          icon: TrendingUp,
-          title: 'Receive Organized Purchase Demand',
-          desc: 'Predictable scheduled fulfillment with locked orders and escrow deposits.',
-        },
-      ];
-    } else {
-      // BUYER
-      badgeLabel = 'Collective Buyer Registration';
-      heading = 'Buy better, together.';
-      supportingCopy =
-        'Find suppliers and better wholesale prices.';
-      benefits = [
-        {
-          icon: Layers,
-          title: 'Collective Purchasing Power',
-          desc: 'Aggregate wholesale volume with nearby kitchens for verified mill rates.',
-        },
-        {
-          icon: ShieldCheck,
-          title: 'Trusted Supplier Connections',
-          desc: 'Procure directly from vetted mills, importers and authorized distributors.',
-        },
-        {
-          icon: Sparkles,
-          title: 'Smarter Procurement Decisions',
-          desc: 'Transparent tier pricing, guaranteed fulfillment and escrow payment safety.',
-        },
-      ];
-    }
-  } else {
-    // forgot-password
-    badgeLabel = 'Account Security Verification';
-    heading = 'Reset your password.';
-    supportingCopy =
-      'Get back to your account securely.';
-    benefits = [
-      {
-        icon: ShieldCheck,
-        title: 'Encrypted Verification Codes',
-        desc: 'Single-use, time-limited cryptographic reset authorization.',
-      },
-      {
-        icon: CheckCircle2,
-        title: 'Immediate Session Invalidation',
-        desc: 'Existing authentication tokens safely revoked on password change.',
-      },
-      {
-        icon: Layers,
-        title: 'Dedicated B2B Protection',
-        desc: 'Enterprise-grade account defense for commercial buyers and suppliers.',
-      },
-    ];
-  }
+  const supportingCopy = pageType === 'signin'
+    ? 'Everything you need to manage procurement.'
+    : pageType === 'forgot-password'
+    ? 'Securely recover your account.'
+    : role === 'SUPPLIER'
+    ? 'Connect with buyers and manage orders.'
+    : 'Discover suppliers and better prices.';
+
+  const highlights = pageType !== 'register'
+    ? []
+    : role === 'SUPPLIER'
+    ? ['Reach business buyers', 'Manage products and orders']
+    : ['Find trusted suppliers', 'Unlock wholesale prices'];
 
   return (
     <div
@@ -203,44 +117,30 @@ export function AuthHeroPanel({
         </div>
       )}
 
-      {/* Top Section: Refined Category Badge & Editorial Heading */}
-      <div className="relative z-10 space-y-2.5">
-        <div
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-sans font-semibold tracking-wide border shadow-2xs"
-          style={{
-            backgroundColor: colors.badgeBg,
-            borderColor: colors.badgeBorder,
-            color: colors.badgeText,
-          }}
-        >
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ backgroundColor: colors.accent }}
-          />
-          <span>{badgeLabel}</span>
-        </div>
-
-        <div className="space-y-1.5">
-          <h2
-            className="font-display font-bold text-xl sm:text-2xl tracking-tight leading-tight"
-            style={{ color: colors.heading }}
-          >
-            {heading}
-          </h2>
-
-          <p
-            className="text-xs sm:text-sm font-sans leading-relaxed"
-            style={{ color: colors.supporting }}
-          >
-            {supportingCopy}
-          </p>
-        </div>
+      <div className="relative z-10 flex flex-1 flex-col justify-center gap-3">
+        <h2 className="auth-heading text-2xl sm:text-[27px] leading-tight" style={{ color: colors.heading }}>
+          {heading}
+        </h2>
+        <p className="text-xs sm:text-sm font-sans leading-relaxed max-w-xs" style={{ color: colors.supporting }}>
+          {supportingCopy}
+        </p>
+        {highlights.length > 0 && (
+          <div className="flex flex-col gap-2 pt-3 mt-2 border-t" style={{ borderColor: colors.divider }}>
+            {highlights.map((item) => (
+              <div key={item} className="flex items-center gap-2.5 text-xs font-medium" style={{ color: colors.heading }}>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: colors.accent }} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div className="relative z-10 pt-4 mt-4 border-t" style={{ borderColor: colors.divider }}>
-        <p className="text-xs font-medium tracking-wide" style={{ color: colors.secondary }}>
+      {/* Original tagline: centered, gold, uppercase and bottom-aligned. */}
+      <div className="relative z-10 pt-2 flex items-center justify-center text-center text-[11px] font-sans">
+        <span className="font-semibold tracking-widest uppercase text-[10px]" style={{ color: colors.accent }}>
           Mil Kar Khareedo, Behtar Pao.
-        </p>
+        </span>
       </div>
     </div>
   );
